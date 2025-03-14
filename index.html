@@ -1,0 +1,337 @@
+ <!-- kalau mau disejajarin sisi kiri antara main sama nav tinggal pilih mau navnya yg geser atau main nya yg geser, pakai calc wajib pakai satuan dan spasi diantara
+
+
+
+
+ contoh calc:
+/* max-width: calc(1404px - 916px); */
+ctrl+k, ctrl+0
+ctrl+k, ctrl+j
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Fundamentals</title>
+    <!-- normalize.css u/ konsisten di tiap browser, font awesome u/ icons, css external, & js external -->
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/main.js"></script>
+    <style>
+        /* Istok Web font */
+        @import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+        /* Poppins font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        :root{
+            --primary-color:#4B4C4E;
+            --accent-color:#74C0FC;
+        }
+        p,button{
+            font-family: "Montserrat", serif;
+        }
+        .container{
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+        .header{
+            display: flex;
+            justify-content:space-between;
+            font-family: 'Istok Web',sans-serif;
+            margin-top: 100px;
+            margin-bottom: 70px;
+            margin-right: 80px;
+            margin-left: 100px;  
+        }
+            .header_title{
+                align-items: center;
+                display: flex;
+                margin: 0;
+            }
+            .header_title span{
+                font-weight: 700;
+                font-size: 2.5rem;
+                color: var(--primary-color);
+                margin-right: 6px; 
+            } 
+            .header .fa-paper-plane{
+                color: var(--accent-color);
+            }
+            .header .fa-circle-xmark,
+            .header .fa-bars{
+                display: none;
+            }
+            .header_navigation{
+                display: flex;
+                align-items: center;
+                gap: 6.25rem;
+            }
+            .header_navigation a{
+                text-decoration: none;
+                font-size: 1.125rem;
+                color: var(--primary-color);
+            }
+        .wrapper{
+            display: flex;
+            margin-bottom: 80px;
+        }
+            .wrapper aside{
+                /* background-color: aliceblue; */
+                display: flex;
+                width: 50%;
+                justify-content: center;
+                align-items: center;
+                margin-left: 80px; 
+                /* hatihatiwrapperasideml80px */
+
+            }
+            .wrapper aside img{
+                height:400px;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .wrapper main{
+                /* background-color: tomato; */
+                /* only until 730px */
+                width: 50%; 
+                margin-right: 80px;
+
+                /* margin-top: 40px;  */
+                /* max-width: calc(1404px - 916px); */
+            }
+            main h1{
+                color: var(--primary-color);
+                font-weight: 700px;
+                font-size: clamp(1.125rem, 3vw, 54px);               
+                /* font-size: clamp(16px, 3vw, 35px);     */
+                /* font-size: 3vw; */
+                /* font-size: 35px; */
+                font-family: 'Poppins';   
+            }       
+            main p{
+                font-size: clamp(10px, 1.3vw, 29px );    
+                font-family: 'Poppins';
+                font-weight: 400px;
+                color: black;
+                margin-bottom: 30px;
+            }
+            .buttons{
+                display: flex;
+                /* justify-content: space-between; */
+                gap: 40px; 
+                /* flex-wrap: wrap; */
+            }
+            /* justify-content: center; */
+            .buttons button{
+                border: var(--accent-color) 3px solid;  
+                border-radius: 8px;
+                padding: 11px 7px;
+                /* padding: 11px 18px; */
+                /* font-family: Poppins'; */
+                font-size: 15px; 
+                font-weight: 600;
+                cursor: pointer;
+            }
+            .buttons button span{
+                margin-left: 4px;   
+            }
+            .buttons_see_my_works{
+                background-color: var(--accent-color);
+                /* color: black; */
+            }
+
+            .buttons_schedule_a_call i{
+                background-color: white;
+            }
+
+        /* laptop */
+        /* between 1016px and 425px 35-18px p 18-12*/
+        /* @media screen and (max-width:1068px){ */
+        @media screen and (max-width:1133px){
+            .container{
+                margin-left: 10px;
+                margin-right: 10px;
+            }     
+            .header{
+                width: 100%;
+                margin: 0; 
+                /* margin direset semua trbl jd 0 u/ betulin yg versi desktop yg diotak-atik*/
+            }
+                .header_title span{
+                    font-size: 20px;
+                }
+                .header_title i{
+                    font-size: 18px;
+                }
+                .header_navigation{
+                    /* 
+                    top0 gdpake krn g butuh nempelin atas
+                    zindex gdpke krn udh tampil paling atas
+                    pos abs biar header nav ukurannya g nginduk ke ibunya tp langsung ke nenek moyang (body)
+                    left kasih 0 biar lebih nempel ke kiri karena secara bawaan html itu ky ada margin aneh di kiri jd dinetralisir pakai left 0
+                    */
+                    position: absolute;
+                    background-color: var(--accent-color);
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    /* display: block; */
+                    display: none;
+                    /* position: absolute;
+                    background-color:var(--accent-color);
+                    top: 0;
+                    left: 0;
+                    margin: 0 auto;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    display: block;
+                    display: none; */
+                }
+                .header_navigation a{
+                    display:block;
+                    text-align:center;
+                    margin: 20px 0;
+                }
+                
+                .header .fa-bars{
+                    /* 
+                    display block biar keliatan diatas krn klo flex dia ngumpet dikanan
+                    line height biar posisi vertikal ny g kejedot atas & biar nyesuain sama header title juga biar ikut rata ketika icon hamburger nya turun
+                    cursor pointer biar ketika diarahin dia kaya button gitu
+                    */
+                    display: block;
+                    font-size: 30px;
+                    line-height: 45px;
+                    cursor: pointer;
+                    color: var(--accent-color);
+                    /* display: none; */
+                }
+
+                .header .fa-circle-xmark{
+                    /* 
+                    gbutuh zindex u/ munculin keatas
+                    */
+                    font-size: 30px; 
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    cursor: pointer;
+                    /* display:block; */
+                    color: var(--primary-color);
+                    display:none;
+                }
+            .wrapper{
+                flex-direction: column;
+                /* align-items: center; */
+                /* width: 100%; */
+            }
+                .wrapper aside{
+                    margin-left: 0;
+                    width: 100%;
+                }
+                .wrapper aside img {
+                    height: 200px;
+                }
+                .wrapper main{
+                    /* background-color: tomato; */
+                    width: 100%; 
+                    /* margin-bottom: 20px; */
+                    margin-right: 0;
+                }
+                main h1{
+                    /* background-color: tomato;  */
+                    text-align: center;
+                    /* width: 75%; */
+                    width: clamp(75%, 330px, 100%);  
+                    margin: auto;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                    /* font-size: 18px;  */
+                }
+                main p{
+                    text-align: center; 
+                    /* font-size: 12px; */
+                    /* display: flex;
+                    justify-content: center;
+                    align-items: center; */
+                    /* width: 50%; */
+                    width: clamp(50%, 300px, 100%);  
+                    margin: auto;
+                    margin-bottom: 25px;
+                }
+                .buttons{
+                    /* background-color: aqua; */
+                    width: 100%;   
+                    /* margin: 0 ; */
+                    display: flex;
+                    gap: 10px;  
+                    justify-content: center;
+                    /* justify-content: space-between; */
+                }
+                .buttons button{
+                    /* padding: 10px 5px;  */
+                    font-size: 11px;   
+                }
+                button span{
+                    font-family: "Montserrat", serif;  
+                    /* color: aliceblue; */
+                }
+        }
+
+        /* @media screen and (max-width:610px){
+            .wrapper aside{
+                width: 100%;
+            }
+            .wrapper main{
+                width: 100%;
+            }
+        } */
+
+    </style>
+</head>
+<body>
+    <!-- container -->
+    <div class="container">
+        <header class="header">
+            <h2 class="header_title">
+                <span>Reza</span>
+                <i class="fa-solid fa-paper-plane" ></i>
+            </h2>
+            <nav class="header_navigation">
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Works</a>
+                <a href="">Contact</a>
+            </nav>
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-circle-xmark"></i>
+        </header>
+        <!-- header -->
+        <div class="wrapper">
+            <aside>
+                <img src="images/reza.png" alt="">
+            </aside>
+            <main>
+                <h1>Hey there! 👋 Looking for a high-performing website that boosts your business?</h1>
+                <p>I'm Reza, a Fullstack Developer. With expertise in both front and back-end, I build seamless, high-performing website tailored to your needs! Let’s bring your vision to life! 🚀</p>
+                <div class="buttons">
+                    <button class="buttons_see_my_works">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Check My Projects</span>
+                        <!-- <span>See my works</span> -->
+                    </button>
+                    <button class="buttons_schedule_a_call">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Connect with Me</span> 
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
